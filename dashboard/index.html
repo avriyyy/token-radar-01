@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+<script src="../data.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark">◉</div>
+    <div>
+      <h1>TOKEN RADAR</h1>
+      <p class="sub">Pre-token protocols, ranked by what a token would be worth — and how to farm each one.</p>
+    </div>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="radar" class="on">Radar board</button>
+  <button data-tab="live">Live tokens</button>
+  <button data-tab="model">How the model works</button>
+</nav>
+
+<section id="tab-radar" class="tab on">
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search name or slug…" autocomplete="off">
+    <select id="chain"><option value="">All chains</option></select>
+    <select id="cat"><option value="">All categories</option></select>
+    <label class="check"><input id="wl" type="checkbox"> Watchlist only</label>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="board-wrap">
+    <table id="board">
+      <thead><tr>
+        <th data-k="rank" class="num on">#</th>
+        <th data-k="name">Protocol</th>
+        <th data-k="category">Category</th>
+        <th data-k="chains">Chains</th>
+        <th data-k="tvl_usd" class="num">TVL</th>
+        <th data-k="change_7d" class="num">7d</th>
+        <th data-k="age_days" class="num">Age</th>
+        <th data-k="implied_value_usd" class="num">Implied value</th>
+        <th class="num">$/TVL</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <p class="hint">Click a row for its detail view: model breakdown and farm plan. Click a column header to sort.</p>
+</section>
+
+<section id="tab-live" class="tab">
+  <p class="lede">These protocols already have a token that trades. The market sets their value — the radar shows it, but never ranks them against the pre-token board.</p>
+  <div class="board-wrap">
+    <table>
+      <thead><tr>
+        <th>Protocol</th><th>Category</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">MCap / TVL</th><th class="num">7d</th>
+      </tr></thead>
+      <tbody id="live-rows"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="tab-model" class="tab">
+  <div class="model-doc" id="model-doc"></div>
+</section>
+
+<aside id="detail" class="detail" hidden>
+  <button class="close" id="detail-close" aria-label="Close detail">×</button>
+  <div id="detail-body"></div>
+</aside>
+
+<footer>
+  <p>Data: one sealed DefiLlama snapshot (<span id="asof"></span>). “Records no token” means the record carries no token — never that the protocol has none. Implied values are this radar's own model, not a prediction that a token is issued, or when.</p>
+  <p>Built for the make.fun token-radar-01 bounty. Runs with no network: every figure on this page comes from the snapshot beside it.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
